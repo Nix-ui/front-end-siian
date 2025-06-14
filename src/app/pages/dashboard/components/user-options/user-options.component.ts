@@ -14,7 +14,7 @@ export class UserOptionsComponent {
     {
       name: 'Crear Usuario',
       icon: 'users-plus.svg',
-      path: `${environment.ADMIN_PATH}/register-user`
+      path: `${environment.ADMIN_PATH}/${environment.USER_ENDPOINT}s/register`
     }
   ];
   constructor() { }

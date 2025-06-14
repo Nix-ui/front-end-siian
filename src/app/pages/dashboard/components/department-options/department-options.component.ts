@@ -13,7 +13,7 @@ export class DepartmentOptionsComponent {
     {
       name: 'Crear Departamento',
       icon: 'building-plus.svg',
-      path: `${environment.API_URL}${environment.ADMIN_PATH}/create-department`
+      path: `${environment.ADMIN_PATH}/department/register`
     }
   ]
   constructor() { }
