@@ -1,0 +1,148 @@
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <img src="assets/icons/school.svg" alt="logo" class="sidebar-logo">
+        <span class="sidebar-title">SIIAN ACADEMICO</span>
+    </div>
+    <div class="user-info">
+        <img src="assets/icons/user-circle.svg" alt="avatar" class="user-avatar">
+        <span>Juan Pérez</span>
+    </div>
+    <nav class="sidebar-nav scrollable-content">
+        <!-- <ul>
+        <li class="nav-item active">
+            <div class="item">
+                <a href="/dashboard">
+                <i class="material-icons">
+                    <img src="assets/icons/home.svg" alt="home">
+                </i>
+                <span>Inicio</span>
+                </a>
+            </div>
+            
+        </li>
+        <li class="nav-item">
+            <div class="item">
+                <a href="/data-management">
+                <i class="material-icons">
+                    <img src="assets/icons/database.svg" alt="data">
+                </i>
+                <span>Gestión de Datos</span>
+                </a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="item">
+                <a href="/reports">
+                <i class="material-icons">
+                    <img src="assets/icons/report.svg" alt="report">
+                </i>
+                <span>Reportes</span>
+                </a>
+            </div>
+            
+        </li>
+        <li class="nav-item">
+            <div class="item">
+                <a href="/settings">
+                    <i class="material-icons">
+                        <img src="assets/icons/settings.svg" alt="settings">
+                    </i>
+                    <span>Configuración</span>
+                </a>
+            </div>
+            
+        </li>
+        <li *appHasRole="'admin'" class="nav-item">
+            <div class="item">
+                <a href="/admin">
+                <i class="material-icons">
+                    <img src="assets/icons/shield-code.svg" alt="admin">
+                </i>
+                <span>Admin</span>
+                </a>
+                <button (click)="toggleDropdownAdmin()" class="dropdown-toggle">
+                    <i>
+                        <img src="assets/icons/chevron-compact-down.svg" class="material-icon" alt="arrow">
+                    </i>
+                </button>
+            </div>
+        </li>
+        <li *ngIf="showDropdownAdmin" class="dropdown-menu-li">
+            <div class="dropdown-menu" id="admin-dropdown">
+                <a href="/admin/users">
+                    <button (click)="showUserOptions=!showUserOptions" class="dropdown-toggle">
+                    <i>
+                        <img src="assets/icons/chevron-compact-down.svg" class="material-icon" alt="arrow">
+                    </i>
+                    </button>
+                </a>
+                <ul class="" >
+                    <li *ngIf="showUserOptions" class="dropdown-menu-li">
+                        <a href="/admin/users">Crear Usuario</a>
+                    </li>
+                </ul>
+                <a href="/admin/roles">Roles</a>
+                <a href="/admin/permissions">Permisos</a>
+                <a href="">things</a>
+                <a href="">thing</a>
+            </div>
+        </li>
+        </ul> -->
+        <ul>
+            <ng-container *ngFor="let item of sideBarItems">
+                <li class="nav-item" [class.has-children]="item.children"
+                *appHasRole="item.roles" [class.open]="isOpen(item)">
+                <div class="item" (click)="toggleDropdown(item)" *ngIf="item.children; else simpleLink">
+                    <i class="material-icons" *ngIf="item.icon">
+                    <img [src]="'assets/icons/' + item.icon" [alt]="item.label">
+                    </i>
+                    <span>{{ item.label }}</span>
+                    <button class="dropdown-toggle">
+                    <img src="assets/icons/chevron-compact-down.svg" class="material-icon" alt="arrow">
+                    </button>
+                </div>
+                <ng-template #simpleLink>
+                    <a [routerLink]="item.route">
+                    <i class="material-icons" *ngIf="item.icon">
+                        <img [src]="'assets/icons/' + item.icon" [alt]="item.label">
+                    </i>
+                    <span>{{ item.label }}</span>
+                    </a>
+                </ng-template>
+                <ul *ngIf="item.children && isOpen(item)" class="dropdown-menu">
+                    <ng-container *ngFor="let child of item.children">
+                    <li class="nav-item" [class.has-children]="child.children" [class.open]="isOpen(child)">
+                        <div class="item" (click)="toggleDropdown(child)" *ngIf="child.children; else childLink">
+                        <span>{{ child.label }}</span>
+                        <button class="dropdown-toggle">
+                            <img src="assets/icons/chevron-compact-down.svg" class="material-icon" alt="arrow">
+                        </button>
+                        </div>
+                        <ng-template #childLink>
+                        <a [routerLink]="child.route">{{ child.label }}</a>
+                        </ng-template>
+                        <!-- Recursividad para más niveles -->
+                        <ul *ngIf="child.children && isOpen(child)" class="dropdown-menu">
+                        <ng-container *ngFor="let subchild of child.children">
+                            <!-- Puedes repetir la estructura aquí para más niveles -->
+                            <li class="nav-item">
+                            <a [routerLink]="subchild.route">{{ subchild.label }}</a>
+                            </li>
+                        </ng-container>
+                        </ul>
+                    </li>
+                    </ng-container>
+                </ul>
+                </li>
+            </ng-container>
+        </ul>
+    </nav>
+    <div class="sidebar-footer" *ngIf="isLoggedIn()">
+        <button class="logout-button" (click)="logout()">
+            <i class="material-icons">
+                <img src="assets/icons/logout-2.svg" alt="logout">
+            </i>
+            <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</aside>

@@ -1,0 +1,43 @@
+<header class="topbar">
+    <div class="topbar-left">
+        <h1 class="dashboard-title">Dashboard SIIAN</h1>
+    </div>
+    <div class="topbar-center">
+        <div class="search-bar">
+            <i class="material-icons">
+                <img src="assets/icons/search.svg" alt="search">
+            </i>
+            <input type="text" placeholder="Buscar en el dashboard...">
+        </div>
+    </div>
+    
+    <div class="topbar-right">
+        <div class="user-dropdown">
+            <img src="assets/icons/user-circle.svg" alt="Avatar de Usuario" class="user-avatar-small" (click)="toggleDropdown()">
+            @if(dropdownOpen){
+                <i class="material-icons" >
+                    <img src="assets/icons/chevron-compact-down.svg" alt="">
+                </i>
+                <div class="dropdown-menu">
+                    <a href="#">Configuración de Cuenta</a>
+                    <a href="#">Ayuda</a>
+                    <a (click)="logout()">Cerrar Sesión</a>
+                </div>
+            }
+            
+        </div>
+        <div class="icon-button">
+            <i class="material-icons">
+                <img src="assets/icons/bell.svg" alt="">
+            </i>
+            <span class="badge warning">3</span>
+        </div>
+        <div class="icon-button">
+            <i class="material-icons">
+                <img src="assets/icons/mail.svg" alt="">
+            </i>
+            <span class="badge error">1</span>
+        </div>
+        
+    </div>
+</header>

@@ -1,0 +1,57 @@
+<div class="step-container">
+    <h2>Datos Personales</h2>
+    <form [formGroup]="getForm()" novalidate>
+        <div class="form-group">
+            <label for="id">Numero de Identificacion</label>
+            <input
+            id="id"
+            type="text"
+            formControlName="id"
+            [class.error]="getFieldError('personal', 'id')"
+            placeholder="Mínimo 7 caracteres"
+            />
+            @if (getFieldError('personal', 'id')) {
+                <span class="error-message">{{ getFieldError('personal', 'id') }}</span>
+            }
+        </div>
+        <div class="form-group">
+            <label for="firstName">Nombres</label>
+            <input id="firstName" type="text" formControlName="firstName" [class.error]="getFieldError('personal', 'email')" placeholder="Juan Alberto" />
+            @if (getFieldError('personal', 'firstName')) {
+                <span class="error-message">{{getFieldError('personal', 'firstName') }}</span>
+            }
+        </div>
+        
+        <div class="form-group">
+            <label for="maternalLastName">Apellido Materno *</label>
+            <input
+            id="maternalLastName"
+            type="text"
+            formControlName="maternalLastName"
+            [class.error]="getFieldError('personal', 'maternalLastName')"
+            placeholder="Martinez"
+            />
+            @if (getFieldError('personal', 'maternalLastName')) {
+                <span class="error-message">{{ getFieldError('personal', 'maternalLastName') }}</span>
+            }
+        </div>
+        
+        <div class="form-group">
+          <label for="paternalLastName">Apellido Paterno *</label>
+            <input
+                id="paternalLastName"
+                type="text"
+                formControlName="paternalLastName"
+                [class.error]="getFieldError('personal', 'paternalLastName') || getForm().errors?.['passwordMismatch']"
+                placeholder="Pérez"
+            />
+            @if (getFieldError('personal', 'paternalLastName')) {
+                <span class="error-message">{{ getFieldError('personal', 'paternalLastName') }}</span>
+            }
+            @if (getForm().errors?.['passwordMismatch'] && getForm().get('paternalLastName')?.touched) {
+                <span class="error-message">Las contraseñas no coinciden</span>
+            }
+        </div>
+        
+    </form>
+</div>

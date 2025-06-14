@@ -1,0 +1,12 @@
+
+main{
+    width: 70%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    app-register-user{
+        flex:2 2 100dvw;
+    }
+}

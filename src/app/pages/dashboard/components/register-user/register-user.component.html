@@ -1,0 +1,82 @@
+
+
+<main>
+<div class="form-wrapper">
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+        <div 
+            class="progress-fill" 
+            [style.width.%]="(currentStep / 3) * 100"
+        ></div>
+        </div>
+        <div class="step-indicators">
+        @for (step of [1, 2, 3]; track step) {
+            <div 
+            class="step-indicator"
+            [class.active]="currentStep >= step"
+            [class.current]="currentStep === step"
+            (click)="registerUserService.goToStep(step)"
+            >
+            {{ step }}
+            </div>
+        }
+        </div>
+    </div>
+    
+    <!-- Step Labels -->
+    <div class="step-labels">
+        <span [class.active]="currentStep === 1">Cuenta</span>
+        <span [class.active]="currentStep === 2">Personal</span>
+        <span [class.active]="currentStep === 3">Direccion</span>
+    </div>
+    
+    <!-- Form Content -->
+    <div class="form-content">
+        @switch (currentStep) {
+        @case (1) {
+            <app-profile></app-profile>
+        }
+        @case (2) {
+            <app-personal-info></app-personal-info>
+        }
+        @case (3) {
+            <app-user-address-form></app-user-address-form>
+        }
+    }
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+        <button 
+        type="button"
+        class="btn btn-secondary"
+        [disabled]="currentStep === 1"
+        (click)="registerUserService.previousStep()"
+        >
+        ← Anterior
+        </button>
+        
+        <div class="button-spacer"></div>
+        
+        @if (currentStep < 3) {
+        <button 
+            type="button"
+            class="btn btn-primary"
+            (click)="nextStep()"
+        >
+            Siguiente →
+        </button>
+        } @else {
+        <button 
+            type="button"
+            class="btn btn-success"
+            [disabled]="!registerUserService.isCurrentStepValid()"
+            (click)="submit()"
+        >
+            Crear Usuario
+        </button>
+        }
+    </div>
+    </div>
+</main>

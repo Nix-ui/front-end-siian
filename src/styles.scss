@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:root{
+    --clr-primary-light: #ffffff;
+    --clr-primary-azure-a10: #dCD8e9;
+    --clr-primary-azure-a20: #b7aed1;
+    --clr-primary-azure-a30: #9485b9;
+    --clr-primary-azure-a40: #725e9f;
+    --clr-primary-azure-a50: #4e3e70;
+    --clr-primary-azure-a60: #2c2241;
+    --clr-primary-azure-a70: #140e20;
+    --clr-primary-dark: #000000;
+    --clr-primary-green-a10: #88eba8;
+    --clr-primary-green-a20: #6fc089;
+    --clr-primary-green-a30: #56976b;
+    --clr-primary-green-a40: #3e704e;
+    --clr-primary-green-a50: #284b33;
+    --clr-primary-green-a60: #13291A;
+    --clr-primary-green-a70: #07140b;
+    --clr-primary-gray-a10: #dadadc;
+    --clr-primary-gray-a20: #b3b2b6;
+    --clr-primary-gray-a30: #8d8c92;
+    --clr-primary-gray-a40: #69686f;
+    --clr-primary-gray-a50: #47464c;
+    --clr-primary-gray-a60: #27272b;
+    --clr-primary-gray-a70: #111113;
+    --clr-primary-a100: #000000;
+    --secundary-orange-warning: #f39c12;
+    --secundary-red-error: #E74C3C;
+}
+body{
+    background: linear-gradient(360deg, var(--clr-primary-green-a70), var(--clr-primary-gray-a50));
+    background-repeat:repeat-y;
+    background-attachment: fixed;
+}

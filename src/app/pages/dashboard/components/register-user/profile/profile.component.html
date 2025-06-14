@@ -1,0 +1,72 @@
+<div class="step-container">
+    <h2>Información de Cuenta</h2>
+    <form [formGroup]="getForm()" novalidate>
+        <!-- <div class="form-group">
+            <label for="username">Numero de Identificacion</label>
+            <input
+            id="id"
+            type="text"
+            formControlName="id"
+            [class.error]="getFieldError('account', 'id')"
+            placeholder="Mínimo 7 caracteres"
+            />
+            @if (getFieldError('account', 'id')) {
+                <span class="error-message">{{ getFieldError('account', 'id') }}</span>
+            }
+        </div> -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" [class.error]="getFieldError('account', 'email')" placeholder="ejemplo@ejemplo.com" />
+            @if (getFieldError('account', 'email')) {
+                <span class="error-message">{{getFieldError('account', 'email') }}</span>
+            }
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Contraseña *</label>
+            <div class="password-field">
+                <input
+                id="password"
+                type="password"
+                formControlName="password"
+                [class.error]="getFieldError('account', 'password')"
+                placeholder="Mínimo 8 caracteres"
+                />
+                <button class="show-password" (click)="toglePasswordVisibility()">
+                    <i>
+                        <img id="showPassword" src="assets/icons/eye.svg" alt="">
+                    </i>
+                </button>
+            </div>
+            @if (getFieldError('account', 'password')) {
+                <span class="error-message">{{ getFieldError('account', 'password') }}</span>
+            }
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Confirmar Contraseña *</label>
+            <div class="password-field">
+                <input
+                id="confirmPassword"
+                type="password"
+                formControlName="confirmPassword"
+                [class.error]="getFieldError('account', 'confirmPassword') || registerUserService.accountForm.errors?.['passwordMismatch']"
+                placeholder="Repite tu contraseña"
+                />
+                <button class="show-password" (click)="tooglePasswordVisibilityConfirm()">
+                    <i>
+                        <img id="showConfirmPassword" src="assets/icons/eye.svg" alt="">
+                    </i>
+                </button>
+            </div>
+            
+            @if (getFieldError('account', 'confirmPassword')) {
+                <span class="error-message">{{ getFieldError('account', 'confirmPassword') }}</span>
+            }
+            @if (registerUserService.accountForm.errors?.['passwordMismatch'] && registerUserService.accountForm.get('confirmPassword')?.touched) {
+                <span class="error-message">Las contraseñas no coinciden</span>
+            }
+        </div>
+        
+    </form>
+</div>

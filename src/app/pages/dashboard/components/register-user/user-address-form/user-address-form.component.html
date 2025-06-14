@@ -1,0 +1,52 @@
+<div class="step-container">
+    <h2>Datos Personales</h2>
+    <form [formGroup]="getForm()" novalidate>
+        <div class="form-group">
+            <label for="department">Departamento</label>
+            <select id="department" formControlName="department" (change)="onChangeDepartment($event)">
+                @if(departments && departments.length > 0) {
+                    <option value="" disabled>Seleccione un Departamento</option>
+                    @for(department of departments; track department.id) {
+                        <option value="{{ department.name }}" (click)="getProvinces(department.name)">{{ department.name }}</option>
+                    }
+                }@else{
+                    <option value="">No hay departamentos</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="province">Provincia</label>
+            <select id="province" formControlName="province" (change)="onChangeProvince($event)" placeholder="Seleccione una provincia">
+                @if(provinces && provinces.length > 0) {
+                    <option value="" disabled>Seleccione una Provincia</option>
+                    @for(province of provinces; track province.id) {
+                        <option value="{{ province.name }}">{{ province.name }}</option>
+                    }
+                }@else{
+                    <option value="">No hay provincias</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="street">Calle</label>
+            <input id="street" type="text" formControlName="street" [class.error]="getFieldError('personal', 'street')" placeholder="Calle Los Olivos" />
+            @if (getFieldError('personal', 'street')) {
+                <span class="error-message">{{getFieldError('personal', 'street') }}</span>
+            }
+        </div>
+        
+        <div class="form-group">
+            <label for="details">Detalles *</label>
+            <input
+            id="details"
+            type="text"
+            formControlName="details"
+            [class.error]="getFieldError('personal', 'details')"
+            placeholder="Frente a la plaza"
+            />
+            @if (getFieldError('personal', 'details')) {
+                <span class="error-message">{{ getFieldError('personal', 'details') }}</span>
+            }
+        </div>
+    </form>
+</div>
