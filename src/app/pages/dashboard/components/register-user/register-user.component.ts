@@ -41,7 +41,6 @@ export class RegisterUserComponent {
     });
   }
   submit(){
-    console.log(this.registerUserService.getAllFormData());
     this.registerUserService.submitForm();
   }
 }

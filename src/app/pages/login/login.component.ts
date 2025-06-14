@@ -32,7 +32,6 @@ export class LoginComponent {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
-    console.log(passwordInput);
     if (passwordInput && this.showPassword) {
       passwordInput.type = this.showPassword ? 'text' : 'password';
     }else{
@@ -40,14 +39,11 @@ export class LoginComponent {
     }
   }
   onSubmit() {
-    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       this.loading = true;
       this.error = '';
-      console.log(this.loginForm.value);
       this.authService.login(this.loginForm.value).subscribe({
         next: () => {
-          console.log('Login successful');
           alert('Inicio de sesión exitoso');
           this.router.navigate([this.returnUrl]);
         },

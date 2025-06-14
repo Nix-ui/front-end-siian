@@ -26,7 +26,6 @@ export class UserAddressFormComponent {
   getDepartments(){
     this.departmentsAddressService.getDepartments().subscribe(departments => {
       this.departments = departments;
-      console.log(this.departments);
     });
     return this.departments;
   }
@@ -43,7 +42,6 @@ export class UserAddressFormComponent {
   onChangeProvince(event: any) {
     const provinceName = event.target.value;
     this.getForm().get('province')?.setValue(provinceName);
-    console.log(this.getForm());
   }
   getForm(){
     return this.registerUserService.addressForm;

@@ -2,7 +2,7 @@
     @for (departmentOption of departmentOptions; track departmentOption.name) {
         <div class="department-option">
             <a [routerLink]="[departmentOption.path]">
-                <i><img src="assets/icons/departmentOption.icon" alt="departmentOption.name"></i>
+                <i><img src="assets/icons/{{departmentOption.icon}}" alt="{{departmentOption.name}}"></i>
                 <span>{{ departmentOption.name }}</span>
             </a>
         </div>

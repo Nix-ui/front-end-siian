@@ -39,6 +39,17 @@ export class SidebarComponent {
             roles: ['admin']
           }
         ]
+      },
+      {
+        label: 'Departamentos',
+        roles: ['admin'],
+        children: [
+          {
+            label: 'Crear Departamento',
+            route: 'admin/department/register',
+            roles: ['admin']
+          }
+        ]
       }
     ]
   },

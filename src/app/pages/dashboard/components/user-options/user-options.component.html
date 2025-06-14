@@ -2,7 +2,7 @@
     @for (userOption of userOptions; track userOption.name) {
         <div class="user-option">
             <a [routerLink]="[userOption.path]">
-                <i><img src="assets/icons/userOption.icon" alt="userOption.name"></i>
+                <i><img src="assets/icons/{{userOption.icon}}" alt="{{userOption.name}}"></i>
                 <span>{{ userOption.name }}</span>
             </a>
         </div>
