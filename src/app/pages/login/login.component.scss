@@ -5,9 +5,13 @@
     margin-right: auto;
     padding: 2rem;
     border-radius: 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background:linear-gradient(230deg, var(--clr-primary-green-a60) 30%, var(--clr-primary-gray-a30) 60%, var(--clr-primary-azure-a60) 100%);
+    background: rgba(255, 255, 255, 0.274); 
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
+
     
     h2 {
         color: var(--clr-primary-gray-a70);
