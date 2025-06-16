@@ -120,13 +120,13 @@
     }
     
 .btn-primary {
-    background: var(--clr-primary-azure-a60);
+    background:var(--clr-midnight-green);
     color: var(--clr-primary-light);
 }
     
 .btn-primary:hover:not(:disabled) {
-    background: var(--clr-primary-gray-a70);
-    color: var(--clr-primary-azure-a30);
+    background: var(--clr-chinese-violet);
+    color: var(--clr-primary-light);
     transform: translateY(-1px);
 }
     

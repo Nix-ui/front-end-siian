@@ -5,7 +5,13 @@
 }
 *:root{
     --clr-primary-light: #ffffff;
-    --clr-cian-light: #53F4FF;
+    --clr-electric-blue: #53F4FF;
+    --clr-light-blue: #3885BC;
+    --clr-columbia-blue: #CADCE3;
+    --clr-midnight-green: #225560;
+    --clr-chinese-violet: #83678E;
+    --clr-primary-blue: #4390C7; 
+    --clr-primary-blue-a10: #94B7C7;
     --clr-primary-azure-a10: #dCD8e9;
     --clr-primary-azure-a20: #b7aed1;
     --clr-primary-azure-a30: #9485b9;
@@ -33,7 +39,7 @@
     --secundary-red-error: #E74C3C;
 }
 body{
-    background: #60B2E5;
+    background: #DFFDFF;
     background-repeat:repeat-y;
     font-family: 'Roboto Slab', serif;
     background-attachment: fixed;
