@@ -1,0 +1,26 @@
+<main>
+    <div class="step-container">
+    <h2>Información de Cuenta</h2>
+    <form [formGroup]="getForm()" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="name">Nombre del departamento</label>
+            <input id="name" type="text" formControlName="name" [class.error]="getFieldError('department', 'name')" placeholder="Ingresa el nombre del departamento" />
+            @if (getFieldError('department', 'name')) {
+                <span class="error-message">{{getFieldError('department', 'name') }}</span>
+            }
+        </div>
+        <div class="form-group">
+            <label for="description">Descripcion</label>
+            <input id="description" type="description" formControlName="description" [class.error]="getFieldError('department', 'description')" placeholder="Ingresa la descripcion del departamento" />
+            @if (getFieldError('department', 'description')) {
+                <span class="error-message">{{getFieldError('department', 'name') }}</span>
+            }
+        </div>
+        <div class="button-group">
+            <button type="button" class="btn btn-secondary reset-button" (click)="resetForm()">Reiniciar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Registrar</button>
+        </div>
+        
+    </form>
+</div>
+</main>

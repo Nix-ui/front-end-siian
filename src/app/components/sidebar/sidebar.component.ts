@@ -39,6 +39,39 @@ export class SidebarComponent {
             roles: ['admin']
           }
         ]
+      },
+      {
+        label: 'Departamentos',
+        roles: ['admin'],
+        children: [
+          {
+            label: 'Crear Departamento',
+            route: 'admin/department/register',
+            roles: ['admin']
+          }
+        ]
+      },
+      {
+        label:'Carreras',
+        roles: ['admin'],
+        children: [
+          {
+            label: 'Crear Carrera',
+            route:'admin/carrer/register',
+            roles:['admin']
+          }
+        ]
+      },
+      {
+        label: 'Estudiantes',
+        roles: ['admin'],
+        children: [
+          {
+            label: 'Crear Estudiante',
+            route: 'admin/student/create',
+            roles: ['admin']
+          }
+        ]
       }
     ]
   },

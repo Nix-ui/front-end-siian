@@ -9,6 +9,7 @@ import { RegisterUserService } from '../../../services/register-user.service';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
+  @Input() formGroup!: any;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
   constructor(public registerUserService: RegisterUserService) {}
@@ -17,6 +18,9 @@ export class ProfileComponent {
     return this.registerUserService.getFieldError(formName, fieldName);
   }
   getForm(){
+    if(this.formGroup){
+      return this.formGroup;
+    }
     return this.registerUserService.accountForm;
   }
   toglePasswordVisibility() {

@@ -1,0 +1,33 @@
+<div class="step-container">
+    <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Ingrese el nombre: 2025-1" formControlName="name" >
+
+        </div>
+        <div class="form-group">
+            <label for="code">Codigo</label>
+            <input type="text" class="form-control" id="code" placeholder="Ingrese el codigo de materia" formControlName="code" [minLength]="7" [maxLength]="7">
+        </div>
+        <div class="form-group">
+            <label for="carrer">Carrera</label>
+            <select name="carrer" id="carrer" formControlName="carrer">
+                @if(carrers.length > 0) {
+                    <option disabled selected>Seleccione una Carrera</option>
+                    @for (carrer of carrers; track carrer.id) {
+                        <option value="{{carrer.name}}">{{carrer.name}}</option>
+                    }
+                } @else {
+                    <option value="" disabled selected>Carreras No Encontradas</option>
+                }
+            </select>
+        </div>
+        <div class="form-group-field">
+            <input type="checkbox" name="selectCarrer" id="selectCarrer" (click)="selectCarrer()">
+            <small>Seleccionar Carrera</small>
+        </div>
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>
