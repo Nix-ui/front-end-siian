@@ -1,27 +1,115 @@
 
 main{
-    width: 70%;
+    width: 60%;
     height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin:0 auto;
     background: linear-gradient(125deg, var(--clr-primary-green-a40), var(--clr-primary-gray-a60));
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px var(--clr-primary-gray-a50);
     overflow: hidden;
-    details{
-        flex: 1 1 800px;
+    ul{
+        list-style: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: center;
         width: 100%;
-        summary{
-            cursor: pointer;
+        li{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            summary{
+                &:hover{
+                    background: linear-gradient(185deg,var(--clr-primary-gray-a50),var(--clr-primary-green-a40));
+                    cursor: pointer;
+                    border-radius: 20px;
+                }
+            }
+            details{
+                flex: 1 1 800px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                
+                summary{
+                    cursor: pointer;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    &hover{
+                        background-color: var(--clr-primary-gray-a50);
+                        border-radius: 10px;
+                        padding: 10px;
+                        transition: all 0.2s ease-in-out;
+                        scale: 1.2;
+                    }
+                    h4{
+                        &hover{
+                            background-color: var(--clr-primary-gray-a50);
+                            border-radius: 10px;
+                            padding: 10px;
+                            transition: all 0.2s ease-in-out;
+                            scale: 1.3;
+                        }
+                    }
+                }
+                &::after{
+                    content: "";
+                    background: var(--clr-primary-azure-a70);
+                }
+                ul{
+                    list-style: none;
+                    li{
+                        text-align: center;
+                        >a{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 10px;
+                            border-radius: 10px;
+                            transition: all 0.2s ease-in-out;
+                            text-decoration: none;
+                            color: var(--clr-primary-azure-a40);
+                            &:hover{
+                                background-color: var(--clr-primary-gray-a50);
+                                scale: 1.1;
+                                transition: all 0.2s ease-in-out;
+                                box-shadow: 0px 0px 10px 0px var(--clr-primary-gray-a50);
+                                &:active{
+                                    scale: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+                &[open]{
+                    summary{
+                        border-radius: 10px;
+                        padding: 10px;
+                        transition: all 0.2s ease-in-out;
+                        scale: 1.35;
+                    }
+                    ul{
+                        scale:0.75;
+                    }
+                }
+            }
         }
     }
 }

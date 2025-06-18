@@ -1,0 +1,20 @@
+<div class="step-container">
+    <form [formGroup]="academicForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Ingrese el nombre: 2025-1" formControlName="name" [minLength]="6" [maxLength]="6">
+
+        </div>
+        <div class="form-group">
+            <label for="startDate">Fecha de Inicio</label>
+            <input type="date" class="form-control" id="startDate" placeholder="Ingrese la fecha de inicio" formControlName="startDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">Fecha de Fin</label>
+            <input type="date" class="form-control" id="endDate" placeholder="Ingrese la fecha de inicio" formControlName="endDate">
+        </div>
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>

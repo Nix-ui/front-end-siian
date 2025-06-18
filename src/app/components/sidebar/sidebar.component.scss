@@ -121,11 +121,11 @@
                     }
                 }
                 a, .item {
-                    font-size: 1rem; // Font size menor para hijos
+                    font-size: 0.75rem; // Font size menor para hijos
                 }
                 .dropdown-menu {
                     a, .item {
-                        font-size: 0.95rem; // Font size aún menor para subniveles
+                        font-size: 0.7rem; // Font size aún menor para subniveles
                     }
                 }
             }
@@ -225,7 +225,6 @@
                     justify-content: center;
                     text-decoration: none;
                     color: var(--clr-primary-light);
-
                     &:hover{
                         color:var(--clr-primary-azure-a40) ;
                         background-color: var(--clr-primary-gray-a60);
