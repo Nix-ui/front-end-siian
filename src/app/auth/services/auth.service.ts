@@ -27,7 +27,6 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${environment.API_URL}${environment.LOGIN_ENDPOINT}`, credentials)
       .pipe(
         tap(response => {
-          console.log('Respuesta del servidor:', response);
           this.setSession(response.access_token);
         })
       );

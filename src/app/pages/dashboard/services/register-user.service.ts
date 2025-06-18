@@ -52,9 +52,6 @@ export class RegisterUserService {
     const currentStep = this.currentStepSubject.value;
     if (currentStep < 3 && this.isCurrentStepValid()) {
       this.updateFormData();
-      console.log(this.accountForm.value);
-      console.log(this.personalInfoForm.value);
-      console.log(this.addressForm.value);
       this.currentStepSubject.next(currentStep + 1);
     }
   }

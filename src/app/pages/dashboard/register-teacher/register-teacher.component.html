@@ -1,0 +1,109 @@
+
+
+<main>
+<div class="form-wrapper">
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+        <div 
+            class="progress-fill" 
+            [style.width.%]="(currentStep / 3) * 100"
+        ></div>
+        </div>
+        <div class="step-indicators">
+        @for (step of [1, 2, 3, 4]; track step) {
+            <div 
+            class="step-indicator"
+            [class.active]="currentStep >= step"
+            [class.current]="currentStep === step"
+            (click)="registerTeacherService.goToStep(step)"
+            >
+            {{ step }}
+            </div>
+        }
+        </div>
+    </div>
+    
+    <!-- Step Labels -->
+    <div class="step-labels">
+        <span [class.active]="currentStep === 1">Cuenta</span>
+        <span [class.active]="currentStep === 2">Personal</span>
+        <span [class.active]="currentStep === 3">Direccion</span>
+        <span [class.active]="currentStep === 4">Contratacion</span>
+    </div>
+    
+    <!-- Form Content -->
+    <div class="form-content">
+        @switch (currentStep) {
+        @case (1) {
+            <app-profile [formGroup]="registerTeacherService.accountForm" ></app-profile>
+        }
+        @case (2) {
+            <app-personal-info [formGroup]="registerTeacherService.personalInfoForm"></app-personal-info>
+        }
+        @case (3) {
+            <app-user-address-form [formGroup]="registerTeacherService.addressForm" ></app-user-address-form>
+        }
+        @case (4) {
+            <div class="step-container">
+                <h2>Contratacion</h2>
+                <form class="" [formGroup]="getForm()" novalidate>
+                    <div class="form-group">
+                        <label for="hireDate">Fecha de Contratacion</label>
+                        <input type="date" name="hireDate" id="hireDate" formControlName="hireDate" required>
+                    </div>
+                    @if (numberOfSubjects > 0) {
+                        @for(number of listOfSubjects; track number) {
+                            <div class="form-group">
+                                <label for="subject">Materia</label>
+                                <select name="subject" id="subject{{number}}" (change)="selectSubject($event)" required>
+                                    @for (subject of subjects; track subject.code) {
+                                        <option value="{{ subject.code }}">{{subject.code}}-{{ subject.name }}</option>
+                                    }
+                                </select>
+                            </div>
+                        }
+                    }
+                    <div class="button-group">
+                        <button (click)="addSubject()" class="btn btn-secundary">Añadir Materia</button>
+                    </div>
+                </form>
+            </div>
+        }
+    }
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+        <button 
+        type="button"
+        class="btn btn-secondary"
+        [disabled]="currentStep === 1"
+        (click)="registerTeacherService.previousStep()"
+        >
+        ← Anterior
+        </button>
+        
+        <div class="button-spacer"></div>
+        
+        @if (currentStep < 4) {
+        <button 
+            type="button"
+            class="btn btn-primary"
+            (click)="nextStep()"
+        >
+            Siguiente →
+        </button>
+        } @else {
+        <button 
+            type="button"
+            class="btn btn-success"
+            [disabled]="!registerTeacherService.isCurrentStepValid()"
+            (click)="submit()"
+        >
+            Crear Usuario
+        </button>
+        }
+    </div>
+    </div>
+</main>

@@ -1,0 +1,161 @@
+main{
+    width: 70%;
+    height: 80dvh;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(125deg, var(--clr-primary-azure-a50), var(--clr-primary-gray-a60));
+    .form-wrapper{
+        flex:2 2 100dvw;
+    }
+    form{
+        flex: 1 1 100dvw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .button-group{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-around;
+            .reset-button{
+                flex: 1 1 20%;
+                margin: 0 5px;
+                background-color: var(--clr-primary-azure-a40);
+                color: var(--clr-primary-green-a60);
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    background-color: var(--clr-primary-azure-a60);
+                    color: var(--clr-primary-green-a40);
+                }
+                &:disabled{
+                    background-color: var(--clr-primary-gray-a40);
+                    color: var(--clr-primary-azure-a50);
+                    cursor: not-allowed;
+                }
+            }
+            button{
+                flex: 1 1 20%;
+                margin: 0 5px;
+                background-color: var(--clr-primary-green-a40);
+                color: var(--clr-primary-azure-a60);
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    background-color: var(--clr-primary-green-a50);
+                    color: var(--clr-primary-gray-a30);
+                    box-shadow: 0 0 10px var(--clr-primary-azure-a40);
+                    transform: scale(1.05);
+                }
+                &:disabled{
+                    background-color: var(--clr-primary-gray-a40);
+                    color: var(--clr-primary-azure-a50);
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+.step-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    h2 {
+      color: var(--clr-primary-azure-a60);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--clr-primary-azure-a70);
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    
+    input.error, select.error {
+      border-color: #dc3545;
+    }
+    
+    .error-message {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: block;
+    }
+    
+    select {
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      .step-container {
+        padding: 1rem;
+      }
+    }
+    .form-group {
+        margin-bottom: 1.5rem;
+        #description{
+            min-height: 200px;
+            width: 100%;
+            resize: none;
+            font-size: small;
+            display: flex;
+            align-items: center;
+            text-align: justify;
+            text-wrap: wrap;
+        }
+        .password-field{
+            display: flex;
+            align-items: center;
+            position: relative;
+            justify-content:right;
+            .show-password{
+                background: transparent;
+                border: none;
+                position: absolute;
+                right: 10px;
+                justify-self:end;
+                &:hover{
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    scale: 1.1;
+                }
+            }
+        }
+    }
