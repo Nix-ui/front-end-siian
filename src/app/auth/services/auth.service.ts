@@ -24,7 +24,6 @@ export class AuthService {
 
   // Iniciar sesión
   login(credentials: AuthRequest): Observable<AuthResponse> {
-    console.log(`${environment.API_URL}${environment.LOGIN_ENDPOINT}`);
     return this.http.post<AuthResponse>(`${environment.API_URL}${environment.LOGIN_ENDPOINT}`, credentials)
       .pipe(
         tap(response => {
