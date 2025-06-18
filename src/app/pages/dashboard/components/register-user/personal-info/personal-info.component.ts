@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RegisterUserService } from '../../../services/register-user.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,8 +9,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './personal-info.component.scss'
 })
 export class PersonalInfoComponent {
+  @Input() formGroup!: any;
   constructor(public registerUserService: RegisterUserService) {}
   getForm(){
+    if(this.formGroup){
+      return this.formGroup;
+    }
     return this.registerUserService.personalInfoForm;
   }
   getFieldError(formName:string,fieldName:string): string | null {

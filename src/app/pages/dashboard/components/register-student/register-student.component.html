@@ -1,0 +1,116 @@
+
+
+<main>
+<div class="form-wrapper">
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+        <div 
+            class="progress-fill" 
+            [style.width.%]="(currentStep / 3) * 100"
+        ></div>
+        </div>
+        <div class="step-indicators">
+        @for (step of [1, 2, 3, 4]; track step) {
+            <div 
+            class="step-indicator"
+            [class.active]="currentStep >= step"
+            [class.current]="currentStep === step"
+            (click)="registerStudentService.goToStep(step)"
+            >
+            {{ step }}
+            </div>
+        }
+        </div>
+    </div>
+    
+    <!-- Step Labels -->
+    <div class="step-labels">
+        <span [class.active]="currentStep === 1">Cuenta</span>
+        <span [class.active]="currentStep === 2">Personal</span>
+        <span [class.active]="currentStep === 3">Direccion</span>
+        <span [class.active]="currentStep === 4">Carrera</span>
+    </div>
+    
+    <!-- Form Content -->
+    <div class="form-content">
+        @switch (currentStep) {
+        @case (1) {
+            <app-profile [formGroup]="registerStudentService.accountForm" ></app-profile>
+        }
+        @case (2) {
+            <app-personal-info [formGroup]="registerStudentService.personalInfoForm"></app-personal-info>
+        }
+        @case (3) {
+            <app-user-address-form [formGroup]="registerStudentService.addressForm" ></app-user-address-form>
+        }
+        @case (4) {
+            <div class="step-container">
+                <h2>Carrera</h2>
+                <form class="" [formGroup]="getForm()" novalidate>
+                    <div class="form-group">
+                        <label for="department">Departamento</label>
+                        <select name="department" id="department" (change)="onChangeDepartment($event)">
+                            @if (departments.length > 0) {
+                                <option value="" disabled selected>Selecciona un departamento</option>
+                                @for (department of departments; track department.id) {
+                                    <option value="{{ department.id }}" >{{ department.name }}</option>
+                                }
+                            }@else {
+                                <option value="" disabled selected>Cargando...</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="carrer">Carrera</label>
+                        <select name="carrer" id="carrer" formControlName="carrer" (change)="onChangeCarrer($event)" >
+                            @if (carrers.length > 0) {
+                                <option value="" disabled selected>Selecciona una carrera</option>
+                                @for (carrer of carrers; track carrer.id) {
+                                    <option value="{{ carrer.name }}">{{ carrer.name }}</option>
+                                }
+                            } @else {
+                                <option value="" disabled selected>Cargando...</option>
+                            }
+                        </select>
+                    </div>
+                </form>
+            </div>
+        }
+    }
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+        <button 
+        type="button"
+        class="btn btn-secondary"
+        [disabled]="currentStep === 1"
+        (click)="registerStudentService.previousStep()"
+        >
+        ← Anterior
+        </button>
+        
+        <div class="button-spacer"></div>
+        
+        @if (currentStep < 4) {
+        <button 
+            type="button"
+            class="btn btn-primary"
+            (click)="nextStep()"
+        >
+            Siguiente →
+        </button>
+        } @else {
+        <button 
+            type="button"
+            class="btn btn-success"
+            [disabled]="!registerStudentService.isCurrentStepValid()"
+            (click)="submit()"
+        >
+            Crear Usuario
+        </button>
+        }
+    </div>
+    </div>
+</main>

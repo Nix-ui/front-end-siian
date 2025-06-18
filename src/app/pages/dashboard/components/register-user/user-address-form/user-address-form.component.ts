@@ -1,4 +1,4 @@
-import { Component,OnInit, OnChanges } from '@angular/core';
+import { Component,OnInit, OnChanges,Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterUserService } from '../../../services/register-user.service';
@@ -11,6 +11,7 @@ import { DepartmentsAddressService } from '../../../services/departments-address
   styleUrl: './user-address-form.component.scss'
 })
 export class UserAddressFormComponent {
+  @Input() formGroup!: any;
   departments:{id:number,name:string}[]=[];
   provinces:{id:number,name:string}[]=[];
   constructor(public registerUserService: RegisterUserService,
@@ -44,6 +45,9 @@ export class UserAddressFormComponent {
     this.getForm().get('province')?.setValue(provinceName);
   }
   getForm(){
+    if(this.formGroup){
+      return this.formGroup;
+    }
     return this.registerUserService.addressForm;
   }
   getFieldError(formName:string,fieldName:string): string | null {
