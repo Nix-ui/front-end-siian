@@ -17,7 +17,7 @@ export class SidebarComponent {
       label: 'Inicio',
       icon: 'home.svg',
       route: '/dashboard',
-      roles: ['admin']
+      roles: ['admin','student','teacher']
     },
     {
       label: 'Admin',
@@ -75,17 +75,29 @@ export class SidebarComponent {
       }
     ]
   },
+    {
+    label: 'Estudiante',
+    icon: 'school.svg',
+    route: '/report',
+    roles:['student']
+  },
   {
     label: 'Reportes',
     icon: 'report.svg',
     route: '/report',
-    roles:['standard','admin']
+    roles:['standard','admin','student','teacher']
+  },
+    {
+    label: 'Docente',
+    icon: 'teacher.png',
+    route: '/report',
+    roles:['teacher']
   },
   {
     label: 'Configuración',
     icon: 'settings.svg',
     route: '/settings',
-    roles:['standard','admin']
+    roles:['standard','admin','student','teacher']
   }
 
 ]
